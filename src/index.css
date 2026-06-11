@@ -1,0 +1,245 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ============================================================
+   ORACLE — Thème "Cabinet de Voyance" parchemin + dorure
+   ============================================================ */
+
+@theme inline {
+  /* Polices */
+  --font-display: "Cinzel", "Almendra", "Luminari", Georgia, serif;
+  --font-mystic:  "Almendra", "Cinzel", Georgia, serif;
+  --font-body:    "Cormorant Garamond", "Cardo", Georgia, serif;
+
+  /* Tokens shadcn */
+  --radius: 0.75rem;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Couleurs propres à Oracle */
+  --color-parchment:      var(--parchment);
+  --color-parchment-deep: var(--parchment-deep);
+  --color-wood:           var(--wood);
+  --color-wood-deep:      var(--wood-deep);
+  --color-gold:           var(--gold);
+  --color-gold-bright:    var(--gold-bright);
+  --color-gold-deep:      var(--gold-deep);
+  --color-sepia:          var(--sepia);
+  --color-ink:            var(--ink);
+}
+
+:root {
+  /* Palette Oracle */
+  --parchment:      #efe1c1;
+  --parchment-deep: #d8c39a;
+  --wood:           #3a230f;
+  --wood-deep:      #1f1208;
+  --gold:           #c9a24a;
+  --gold-bright:    #f3d985;
+  --gold-deep:      #7a5b1c;
+  --sepia:          #5a3b1b;
+  --ink:            #1e1208;
+
+  /* Shadcn tokens (clair, basés parchemin) */
+  --background: #efe1c1;
+  --foreground: #1e1208;
+  --card: #3a230f;
+  --card-foreground: #f3d985;
+  --popover: #3a230f;
+  --popover-foreground: #f3d985;
+  --primary: #c9a24a;
+  --primary-foreground: #1f1208;
+  --secondary: #d8c39a;
+  --secondary-foreground: #3a230f;
+  --muted: #d8c39a;
+  --muted-foreground: #5a3b1b;
+  --accent: #c9a24a;
+  --accent-foreground: #1f1208;
+  --destructive: #8b1f1f;
+  --destructive-foreground: #f3d985;
+  --border: rgba(122, 91, 28, 0.45);
+  --input: rgba(122, 91, 28, 0.35);
+  --ring: #c9a24a;
+}
+
+/* ----- BASE ----- */
+* { box-sizing: border-box; }
+
+html, body, #root {
+  margin: 0;
+  min-height: 100svh;
+  width: 100%;
+}
+
+body { overflow-x: hidden; }
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-ink);
+  background-color: var(--color-parchment);
+  background-image:
+    /* Halo doré central */
+    radial-gradient(ellipse at 50% 35%, rgba(243, 217, 133, 0.35), transparent 65%),
+    /* Vignette sombre */
+    radial-gradient(ellipse at 50% 50%, transparent 40%, rgba(31, 18, 8, 0.55) 100%),
+    /* Grain parchemin */
+    repeating-radial-gradient(circle at 30% 20%, rgba(122, 91, 28, 0.04) 0 2px, transparent 2px 5px),
+    repeating-radial-gradient(circle at 70% 80%, rgba(58, 35, 15, 0.05) 0 3px, transparent 3px 7px),
+    /* Texture vieux papier */
+    linear-gradient(180deg, #efe1c1 0%, #d8c39a 60%, #b89a64 100%);
+  background-attachment: fixed;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+#root {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ----- TYPO ----- */
+.font-display { font-family: var(--font-display); }
+.font-mystic  { font-family: var(--font-mystic); }
+.font-body    { font-family: var(--font-body); }
+
+/* ----- DEGRADE OR ----- */
+.text-gold-gradient {
+  background: linear-gradient(180deg, #fef0b8 0%, #f3d985 30%, #c9a24a 60%, #7a5b1c 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
+}
+
+.bg-gold-gradient {
+  background: linear-gradient(180deg, #fef0b8 0%, #f3d985 30%, #c9a24a 55%, #7a5b1c 100%);
+}
+
+.bg-wood-gradient {
+  background:
+    radial-gradient(ellipse at 50% 30%, #5e3b1c 0%, #3a230f 60%, #1f1208 100%);
+}
+
+/* ----- BORDURE OR ORNEMENTALE ----- */
+.gold-border {
+  border: 1px solid #c9a24a;
+  box-shadow:
+    inset 0 0 0 1px rgba(254, 240, 184, 0.25),
+    inset 0 0 24px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(0, 0, 0, 0.4),
+    0 12px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* ----- DOS DE CARTE (placeholder ornemental) ----- */
+.card-back-art {
+  background:
+    radial-gradient(circle at 50% 50%, rgba(243, 217, 133, 0.1) 0%, transparent 60%),
+    repeating-conic-gradient(from 0deg at 50% 50%, rgba(201, 162, 74, 0.15) 0deg 8deg, transparent 8deg 16deg),
+    linear-gradient(135deg, #4a2e15 0%, #2a1808 100%);
+  position: relative;
+}
+.card-back-art::before {
+  content: "✦";
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: 3rem;
+  color: rgba(201, 162, 74, 0.85);
+  text-shadow: 0 0 12px rgba(243, 217, 133, 0.6);
+  font-family: var(--font-display);
+}
+.card-back-art::after {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border: 1px solid rgba(201, 162, 74, 0.5);
+  border-radius: 6px;
+  pointer-events: none;
+}
+
+.rune-back-art {
+  background:
+    radial-gradient(circle at 30% 30%, rgba(120, 110, 100, 0.6), transparent 60%),
+    radial-gradient(circle at 70% 70%, rgba(40, 30, 20, 0.6), transparent 60%),
+    linear-gradient(135deg, #6b5a48 0%, #2d2418 100%);
+  border-radius: 50% / 35%;
+  position: relative;
+  box-shadow:
+    inset -6px -8px 18px rgba(0, 0, 0, 0.5),
+    inset 6px 6px 14px rgba(255, 255, 255, 0.12);
+}
+.rune-back-art::after {
+  content: "";
+  position: absolute;
+  inset: 12%;
+  background: radial-gradient(circle at 35% 35%, rgba(255, 255, 255, 0.15), transparent 50%);
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+/* ----- CARTE FLIP 3D ----- */
+.flip-perspective { perspective: 1400px; }
+.flip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.flip-inner.is-flipped { transform: rotateY(180deg); }
+.flip-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.flip-back { transform: rotateY(180deg); }
+
+/* ----- HALO ACTIF ----- */
+.halo-gold {
+  box-shadow:
+    0 0 0 2px rgba(254, 240, 184, 0.8),
+    0 0 30px 6px rgba(243, 217, 133, 0.55),
+    0 0 80px 20px rgba(201, 162, 74, 0.35);
+  animation: halo-pulse 2.4s ease-in-out infinite;
+}
+@keyframes halo-pulse {
+  0%, 100% { box-shadow: 0 0 0 2px rgba(254, 240, 184, 0.7), 0 0 22px 4px rgba(243, 217, 133, 0.45), 0 0 70px 18px rgba(201, 162, 74, 0.3); }
+  50%      { box-shadow: 0 0 0 2px rgba(254, 240, 184, 0.95), 0 0 36px 8px rgba(243, 217, 133, 0.65), 0 0 100px 28px rgba(201, 162, 74, 0.45); }
+}
+
+/* ----- SCROLLBAR (modale) ----- */
+.fancy-scroll::-webkit-scrollbar { width: 8px; }
+.fancy-scroll::-webkit-scrollbar-track { background: transparent; }
+.fancy-scroll::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #c9a24a, #7a5b1c);
+  border-radius: 4px;
+}
+
+/* ----- UTILITAIRES ----- */
+.no-tap { -webkit-tap-highlight-color: transparent; }
+@media (max-width: 640px) {
+  .home-title { font-size: 3.5rem !important; }
+}

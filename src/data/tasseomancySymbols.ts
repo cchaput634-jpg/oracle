@@ -1,0 +1,25 @@
+import type { TasseomancySymbol } from "@/types/tasseomancy";
+
+export const TASSEOMANCY_SYMBOLS: TasseomancySymbol[] = [
+  { id: 1,  symbole: "Cercle",          interpretation: "Renouveau, unité ou la continuité d'un projet.",                                 image: "/images/tasses/Cercle.png" },
+  { id: 2,  symbole: "Croix",           interpretation: "Une épreuve, un obstacle à surmonter ou une décision difficile.",                 image: "/images/tasses/Croix.png" },
+  { id: 3,  symbole: "Arbre",           interpretation: "Croissance, prospérité, stabilité et bonne santé.",                               image: "/images/tasses/Arbre.png" },
+  { id: 4,  symbole: "Cœur",            interpretation: "Amour, romance ou affection profonde.",                                           image: "/images/tasses/Coeur.png" },
+  { id: 5,  symbole: "Oiseau en vol",   interpretation: "Bonne nouvelle qui approche.",                                                    image: "/images/tasses/Oiseau_en_vol.png" },
+  { id: 6,  symbole: "Oiseau immobile", interpretation: "Il faut patienter en attendant les nouvelles.",                                   image: "/images/tasses/Oiseau_immobile.png" },
+  { id: 7,  symbole: "Serpent",         interpretation: "Danger ou trahison, mais peut aussi symboliser une transformation.",              image: "/images/tasses/Serpent.png" },
+  { id: 8,  symbole: "Étoile",          interpretation: "Espoir, succès, protection, direction divine et opportunités.",                   image: "/images/tasses/Etoile.png" },
+  { id: 9,  symbole: "Chemin droit",    interpretation: "Période de voyage ou de changement. Le chemin est clair et facile.",               image: "/images/tasses/Chemin_droit.png" },
+  { id: 10, symbole: "Chemin sinueux",  interpretation: "Période de voyage ou de changement. Il y aura des obstacles.",                     image: "/images/tasses/Chemin_sinueux.png" },
+  { id: 11, symbole: "Montagne",        interpretation: "Défis importants, mais avec la capacité de les surmonter.",                        image: "/images/tasses/Montagne.png" },
+  { id: 12, symbole: "1",  interpretation: "Indique des dates spécifiques ou des délais.", image: "/images/tasses/1.png"  },
+  { id: 13, symbole: "2",  interpretation: "Indique des dates spécifiques ou des délais.", image: "/images/tasses/2.png"  },
+  { id: 14, symbole: "3",  interpretation: "Indique des dates spécifiques ou des délais.", image: "/images/tasses/3.png"  },
+  { id: 15, symbole: "4",  interpretation: "Indique des dates spécifiques ou des délais.", image: "/images/tasses/4.png"  },
+  { id: 16, symbole: "5",  interpretation: "Indique des dates spécifiques ou des délais.", image: "/images/tasses/5.png"  },
+  { id: 17, symbole: "6",  interpretation: "Indique des dates spécifiques ou des délais.", image: "/images/tasses/6.png"  },
+  { id: 18, symbole: "7",  interpretation: "Indique des dates spécifiques ou des délais.", image: "/images/tasses/7.png"  },
+  { id: 19, symbole: "8",  interpretation: "Indique des dates spécifiques ou des délais.", image: "/images/tasses/8.png"  },
+  { id: 20, symbole: "9",  interpretation: "Indique des dates spécifiques ou des délais.", image: "/images/tasses/9.png"  },
+  { id: 21, symbole: "10", interpretation: "Indique des dates spécifiques ou des délais.", image: "/images/tasses/10.png" },
+];
