@@ -105,7 +105,7 @@ export function TarotPage() {
 
   return (
     <section className="flex-1 flex flex-col">
-      <ModuleHeader title="Le Tarot" />
+      <ModuleHeader title="Oracle Ombrum" />
 
       <div className="flex-1 flex flex-col items-center px-4 sm:px-6 pb-6 md:pb-4">
         <AnimatePresence mode="wait">

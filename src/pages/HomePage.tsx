@@ -5,7 +5,7 @@ const MODULES = [
   {
     to: "/tarot",
     symbol: "✦",
-    name: "Le Tarot",
+    name: "Oracle Ombrum",
     desc: "Tirage en croix ou carte unique",
   },
   {
