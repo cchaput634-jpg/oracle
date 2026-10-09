@@ -4,7 +4,7 @@
 @custom-variant dark (&:is(.dark *));
 
 /* ============================================================
-   ORACLE — Thème "Cabinet de Voyance" parchemin + dorure
+   ORACLE OMBRUM — Thème "Cabinet cosmique" nocturne + dorure
    ============================================================ */
 
 @theme inline {
@@ -35,7 +35,7 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
 
-  /* Couleurs propres à Oracle */
+  /* Couleurs propres à Oracle (noms historiques conservés — valeurs cosmiques) */
   --color-parchment:      var(--parchment);
   --color-parchment-deep: var(--parchment-deep);
   --color-wood:           var(--wood);
@@ -45,43 +45,64 @@
   --color-gold-deep:      var(--gold-deep);
   --color-sepia:          var(--sepia);
   --color-ink:            var(--ink);
+
+  /* Nouveaux tokens cosmiques */
+  --color-night:      var(--night);
+  --color-night-deep: var(--night-deep);
+  --color-cosmic:     var(--cosmic);
+  --color-nebula:     var(--nebula);
+  --color-starlight:  var(--starlight);
+  --color-moonlight:  var(--moonlight);
+  --color-ivory:      var(--ivory);
 }
 
 :root {
-  /* Palette Oracle */
-  --parchment:      #efe1c1;
-  --parchment-deep: #d8c39a;
-  --wood:           #3a230f;
-  --wood-deep:      #1f1208;
-  --gold:           #c9a24a;
-  --gold-bright:    #f3d985;
-  --gold-deep:      #7a5b1c;
-  --sepia:          #5a3b1b;
-  --ink:            #1e1208;
+  /* ====== PALETTE OMBRUM ====== */
+  /* Nocturne cosmique */
+  --night-deep:  #05061a;   /* nuit la plus profonde */
+  --night:       #0e0f2e;   /* indigo nocturne */
+  --cosmic:      #1b1848;   /* indigo cosmique saturé */
+  --nebula:      #a21caf;   /* magenta nébuleuse (accent) */
+  --starlight:   #ffffff;
+  --moonlight:   #c7d2fe;   /* bleu-lavande doux */
+  --ivory:       #f5f1e4;   /* texte clair chaud */
 
-  /* Shadcn tokens (clair, basés parchemin) */
-  --background: #efe1c1;
-  --foreground: #1e1208;
-  --card: #3a230f;
+  /* Or (inchangé — la pierre angulaire de la DA) */
+  --gold:        #c9a24a;
+  --gold-bright: #f3d985;
+  --gold-deep:   #7a5b1c;
+
+  /* Alias historiques (compat avec classes existantes) */
+  --parchment:      #ece6d2;  /* resté chaud pour certains hovers */
+  --parchment-deep: #d4ccb0;
+  --wood:           #1b1848;  /* ex-brun → indigo cosmique */
+  --wood-deep:      #05061a;  /* ex-brun foncé → nuit profonde */
+  --sepia:          #c7d2fe;  /* ex-brun moyen → moonlight (texte secondaire sur fond sombre) */
+  --ink:            #f5f1e4;  /* ex-ink sombre → ivoire (texte principal) */
+
+  /* Shadcn tokens — thème sombre */
+  --background: #0e0f2e;
+  --foreground: #f5f1e4;
+  --card: #1b1848;
   --card-foreground: #f3d985;
-  --popover: #3a230f;
+  --popover: #1b1848;
   --popover-foreground: #f3d985;
   --primary: #c9a24a;
-  --primary-foreground: #1f1208;
-  --secondary: #d8c39a;
-  --secondary-foreground: #3a230f;
-  --muted: #d8c39a;
-  --muted-foreground: #5a3b1b;
+  --primary-foreground: #05061a;
+  --secondary: #2a2560;
+  --secondary-foreground: #f3d985;
+  --muted: #2a2560;
+  --muted-foreground: #c7d2fe;
   --accent: #c9a24a;
-  --accent-foreground: #1f1208;
-  --destructive: #8b1f1f;
+  --accent-foreground: #05061a;
+  --destructive: #a81b1b;
   --destructive-foreground: #f3d985;
-  --border: rgba(122, 91, 28, 0.45);
-  --input: rgba(122, 91, 28, 0.35);
+  --border: rgba(201, 162, 74, 0.35);
+  --input: rgba(201, 162, 74, 0.3);
   --ring: #c9a24a;
 }
 
-/* ----- BASE ----- */
+/* ============ BASE ============ */
 * { box-sizing: border-box; }
 
 html, body, #root {
@@ -90,116 +111,137 @@ html, body, #root {
   width: 100%;
 }
 
-body { overflow-x: hidden; }
-
 body {
+  overflow-x: hidden;
   font-family: var(--font-body);
-  color: var(--color-ink);
-  background-color: var(--color-parchment);
+  color: var(--color-ivory);
+  background-color: var(--color-night-deep);
   background-image:
-    /* Halo doré central */
-    radial-gradient(ellipse at 50% 35%, rgba(243, 217, 133, 0.35), transparent 65%),
+    /* Nébuleuse magenta — angle supérieur gauche */
+    radial-gradient(ellipse 55% 45% at 18% 22%, rgba(162, 28, 175, 0.28), transparent 60%),
+    /* Nébuleuse indigo — angle inférieur droit */
+    radial-gradient(ellipse 60% 50% at 82% 80%, rgba(99, 102, 241, 0.3), transparent 60%),
+    /* Lueur dorée centrale, discrète */
+    radial-gradient(ellipse 65% 40% at 50% 48%, rgba(243, 217, 133, 0.08), transparent 65%),
     /* Vignette sombre */
-    radial-gradient(ellipse at 50% 50%, transparent 40%, rgba(31, 18, 8, 0.55) 100%),
-    /* Grain parchemin */
-    repeating-radial-gradient(circle at 30% 20%, rgba(122, 91, 28, 0.04) 0 2px, transparent 2px 5px),
-    repeating-radial-gradient(circle at 70% 80%, rgba(58, 35, 15, 0.05) 0 3px, transparent 3px 7px),
-    /* Texture vieux papier */
-    linear-gradient(180deg, #efe1c1 0%, #d8c39a 60%, #b89a64 100%);
+    radial-gradient(ellipse at 50% 50%, transparent 35%, rgba(5, 6, 26, 0.75) 100%),
+    /* Base cosmique */
+    linear-gradient(180deg, #05061a 0%, #0e0f2e 45%, #1b1848 100%);
   background-attachment: fixed;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
+/* ----- Champ d'étoiles ----- */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(1.2px 1.2px at 12% 8%,  rgba(255,255,255,0.9), transparent 60%),
+    radial-gradient(1.2px 1.2px at 76% 14%, rgba(255,255,255,0.8), transparent 60%),
+    radial-gradient(0.8px 0.8px at 41% 6%,  rgba(255,255,255,0.7), transparent 60%),
+    radial-gradient(0.9px 0.9px at 88% 42%, rgba(255,255,255,0.75), transparent 60%),
+    radial-gradient(1.1px 1.1px at 23% 55%, rgba(255,255,255,0.85), transparent 60%),
+    radial-gradient(0.7px 0.7px at 55% 32%, rgba(255,255,255,0.6), transparent 60%),
+    radial-gradient(1.3px 1.3px at 68% 71%, rgba(255,255,255,0.9), transparent 60%),
+    radial-gradient(0.8px 0.8px at 7%  74%, rgba(255,255,255,0.65), transparent 60%),
+    radial-gradient(1.0px 1.0px at 93% 89%, rgba(255,255,255,0.8), transparent 60%),
+    radial-gradient(0.9px 0.9px at 34% 88%, rgba(255,255,255,0.7), transparent 60%),
+    radial-gradient(0.7px 0.7px at 50% 62%, rgba(255,255,255,0.55), transparent 60%),
+    radial-gradient(1.1px 1.1px at 15% 36%, rgba(255,255,255,0.8), transparent 60%),
+    radial-gradient(0.8px 0.8px at 83% 25%, rgba(255,255,255,0.7), transparent 60%),
+    radial-gradient(1.2px 1.2px at 29% 19%, rgba(255,255,255,0.85), transparent 60%),
+    radial-gradient(0.9px 0.9px at 60% 50%, rgba(255,255,255,0.75), transparent 60%),
+    radial-gradient(0.8px 0.8px at 72% 94%, rgba(255,255,255,0.6), transparent 60%),
+    radial-gradient(1.1px 1.1px at 46% 76%, rgba(255,255,255,0.8), transparent 60%),
+    radial-gradient(0.7px 0.7px at 97% 60%, rgba(255,255,255,0.55), transparent 60%),
+    radial-gradient(1.0px 1.0px at 5%  52%, rgba(255,255,255,0.7), transparent 60%),
+    radial-gradient(0.8px 0.8px at 38% 42%, rgba(255,255,255,0.6), transparent 60%);
+  background-size: 100% 100%;
+  animation: starshine 7s ease-in-out infinite alternate;
+}
+@keyframes starshine {
+  0%   { opacity: 0.6; }
+  100% { opacity: 1; }
+}
+
 #root {
+  position: relative;
+  z-index: 1;
   min-height: 100svh;
   display: flex;
   flex-direction: column;
 }
 
-/* ----- TYPO ----- */
+/* ============ TYPO ============ */
 .font-display { font-family: var(--font-display); }
 .font-mystic  { font-family: var(--font-mystic); }
 .font-body    { font-family: var(--font-body); }
 
-/* ----- DEGRADE OR ----- */
+/* ============ DÉGRADÉ OR ============ */
 .text-gold-gradient {
   background: linear-gradient(180deg, #fef0b8 0%, #f3d985 30%, #c9a24a 60%, #7a5b1c 100%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
-  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.35);
 }
 
 .bg-gold-gradient {
   background: linear-gradient(180deg, #fef0b8 0%, #f3d985 30%, #c9a24a 55%, #7a5b1c 100%);
 }
 
+/* ============ FOND SOMBRE (ex-"wood", surfaces nocturnes) ============ */
 .bg-wood-gradient {
   background:
-    radial-gradient(ellipse at 50% 30%, #5e3b1c 0%, #3a230f 60%, #1f1208 100%);
+    radial-gradient(ellipse at 50% 25%, #2a2560 0%, #1b1848 55%, #05061a 100%);
 }
 
-/* ----- BORDURE OR ORNEMENTALE ----- */
+/* Variante nébuleuse pour grandes surfaces (modales, cartes modules) */
+.bg-cosmic-gradient {
+  background:
+    radial-gradient(ellipse at 20% 20%, rgba(162, 28, 175, 0.35) 0%, transparent 55%),
+    radial-gradient(ellipse at 80% 80%, rgba(99, 102, 241, 0.4) 0%, transparent 55%),
+    radial-gradient(ellipse at 50% 50%, #1b1848 0%, #0e0f2e 70%, #05061a 100%);
+}
+
+/* ============ BORDURE OR ORNEMENTALE ============ */
 .gold-border {
   border: 1px solid #c9a24a;
   box-shadow:
-    inset 0 0 0 1px rgba(254, 240, 184, 0.25),
-    inset 0 0 24px rgba(0, 0, 0, 0.4),
-    0 0 0 1px rgba(0, 0, 0, 0.4),
-    0 12px 40px rgba(0, 0, 0, 0.5);
+    inset 0 0 0 1px rgba(254, 240, 184, 0.3),
+    inset 0 0 30px rgba(0, 0, 0, 0.55),
+    0 0 0 1px rgba(0, 0, 0, 0.5),
+    0 12px 40px rgba(5, 6, 26, 0.7);
 }
 
-/* ----- DOS DE CARTE (placeholder ornemental) ----- */
-.card-back-art {
-  background:
-    radial-gradient(circle at 50% 50%, rgba(243, 217, 133, 0.1) 0%, transparent 60%),
-    repeating-conic-gradient(from 0deg at 50% 50%, rgba(201, 162, 74, 0.15) 0deg 8deg, transparent 8deg 16deg),
-    linear-gradient(135deg, #4a2e15 0%, #2a1808 100%);
-  position: relative;
-}
-.card-back-art::before {
-  content: "✦";
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  font-size: 3rem;
-  color: rgba(201, 162, 74, 0.85);
-  text-shadow: 0 0 12px rgba(243, 217, 133, 0.6);
-  font-family: var(--font-display);
-}
-.card-back-art::after {
-  content: "";
-  position: absolute;
-  inset: 8px;
-  border: 1px solid rgba(201, 162, 74, 0.5);
-  border-radius: 6px;
-  pointer-events: none;
-}
-
+/* ============ DOS DE GALET (rune) ============ */
 .rune-back-art {
   background:
-    radial-gradient(circle at 30% 30%, rgba(120, 110, 100, 0.6), transparent 60%),
-    radial-gradient(circle at 70% 70%, rgba(40, 30, 20, 0.6), transparent 60%),
-    linear-gradient(135deg, #6b5a48 0%, #2d2418 100%);
+    radial-gradient(circle at 30% 30%, rgba(140, 130, 180, 0.55), transparent 60%),
+    radial-gradient(circle at 70% 70%, rgba(10, 8, 35, 0.65), transparent 60%),
+    linear-gradient(135deg, #3a3570 0%, #0a0820 100%);
   border-radius: 50% / 35%;
   position: relative;
   box-shadow:
-    inset -6px -8px 18px rgba(0, 0, 0, 0.5),
-    inset 6px 6px 14px rgba(255, 255, 255, 0.12);
+    inset -6px -8px 20px rgba(0, 0, 0, 0.6),
+    inset 6px 6px 14px rgba(199, 210, 254, 0.15),
+    0 6px 18px rgba(5, 6, 26, 0.5);
 }
 .rune-back-art::after {
   content: "";
   position: absolute;
   inset: 12%;
-  background: radial-gradient(circle at 35% 35%, rgba(255, 255, 255, 0.15), transparent 50%);
+  background: radial-gradient(circle at 35% 35%, rgba(199, 210, 254, 0.2), transparent 55%);
   border-radius: inherit;
   pointer-events: none;
 }
 
-/* ----- CARTE FLIP 3D ----- */
+/* ============ FLIP 3D ============ */
 .flip-perspective { perspective: 1400px; }
 .flip-inner {
   position: relative;
@@ -217,20 +259,21 @@ body {
 }
 .flip-back { transform: rotateY(180deg); }
 
-/* ----- HALO ACTIF ----- */
+/* ============ HALO ACTIF ============ */
 .halo-gold {
   box-shadow:
-    0 0 0 2px rgba(254, 240, 184, 0.8),
-    0 0 30px 6px rgba(243, 217, 133, 0.55),
-    0 0 80px 20px rgba(201, 162, 74, 0.35);
+    0 0 0 2px rgba(254, 240, 184, 0.85),
+    0 0 32px 6px rgba(243, 217, 133, 0.55),
+    0 0 90px 24px rgba(201, 162, 74, 0.4),
+    0 0 140px 40px rgba(162, 28, 175, 0.22);
   animation: halo-pulse 2.4s ease-in-out infinite;
 }
 @keyframes halo-pulse {
-  0%, 100% { box-shadow: 0 0 0 2px rgba(254, 240, 184, 0.7), 0 0 22px 4px rgba(243, 217, 133, 0.45), 0 0 70px 18px rgba(201, 162, 74, 0.3); }
-  50%      { box-shadow: 0 0 0 2px rgba(254, 240, 184, 0.95), 0 0 36px 8px rgba(243, 217, 133, 0.65), 0 0 100px 28px rgba(201, 162, 74, 0.45); }
+  0%, 100% { box-shadow: 0 0 0 2px rgba(254, 240, 184, 0.7), 0 0 24px 5px rgba(243, 217, 133, 0.45), 0 0 80px 20px rgba(201, 162, 74, 0.35), 0 0 130px 36px rgba(162, 28, 175, 0.18); }
+  50%      { box-shadow: 0 0 0 2px rgba(254, 240, 184, 1),   0 0 40px 10px rgba(243, 217, 133, 0.65), 0 0 110px 30px rgba(201, 162, 74, 0.5),  0 0 170px 48px rgba(162, 28, 175, 0.28); }
 }
 
-/* ----- SCROLLBAR (modale) ----- */
+/* ============ SCROLLBAR MYSTIQUE ============ */
 .fancy-scroll::-webkit-scrollbar { width: 8px; }
 .fancy-scroll::-webkit-scrollbar-track { background: transparent; }
 .fancy-scroll::-webkit-scrollbar-thumb {
@@ -238,8 +281,16 @@ body {
   border-radius: 4px;
 }
 
-/* ----- UTILITAIRES ----- */
+/* ============ UTILITAIRES ============ */
 .no-tap { -webkit-tap-highlight-color: transparent; }
+
+/* Scintillement discret pour certains éléments */
+.shimmer-gold {
+  text-shadow:
+    0 0 12px rgba(243, 217, 133, 0.4),
+    0 0 24px rgba(201, 162, 74, 0.25);
+}
+
 @media (max-width: 640px) {
   .home-title { font-size: 3.5rem !important; }
 }
