@@ -10,6 +10,7 @@ import {
 import {
   TAROT_CARDS,
   TAROT_CROSS_POSITIONS,
+  TAROT_THREE_POSITIONS,
 } from "@/data/tarotCards";
 import type {
   DrawnTarotCard,
@@ -17,7 +18,7 @@ import type {
 } from "@/types/tarot";
 import { shuffle } from "@/lib/utils";
 
-type Mode = "single" | "cross";
+type Mode = "single" | "three" | "cross";
 
 function drawSingle(): DrawnTarotCard {
   return {
@@ -26,16 +27,16 @@ function drawSingle(): DrawnTarotCard {
   };
 }
 
-function drawCross(): DrawnTarotCard[] {
-  const cards = shuffle(TAROT_CARDS).slice(0, TAROT_CROSS_POSITIONS.length);
-  return TAROT_CROSS_POSITIONS.map((position, i) => ({
+function drawFromPositions(positions: TarotCrossPosition[]): DrawnTarotCard[] {
+  const cards = shuffle(TAROT_CARDS).slice(0, positions.length);
+  return positions.map((position, i) => ({
     card: cards[i],
     position,
     isRevealed: false,
   }));
 }
 
-const GRID_AREA_CLASS: Record<TarotCrossPosition["gridArea"], string> = {
+const GRID_AREA_CLASS: Record<NonNullable<TarotCrossPosition["gridArea"]>, string> = {
   top: "[grid-area:top]",
   left: "[grid-area:left]",
   center: "[grid-area:center]",
@@ -55,15 +56,21 @@ export function TarotPage() {
     [draw]
   );
 
+  const makeDraw = (m: Mode): DrawnTarotCard[] => {
+    if (m === "single") return [drawSingle()];
+    if (m === "three") return drawFromPositions(TAROT_THREE_POSITIONS);
+    return drawFromPositions(TAROT_CROSS_POSITIONS);
+  };
+
   const startMode = (m: Mode) => {
     setMode(m);
-    setDraw(m === "single" ? [drawSingle()] : drawCross());
+    setDraw(makeDraw(m));
     setActiveIdx(0);
   };
 
   const resetDraw = () => {
     if (!mode) return;
-    setDraw(mode === "single" ? [drawSingle()] : drawCross());
+    setDraw(makeDraw(mode));
     setActiveIdx(0);
   };
 
@@ -91,14 +98,15 @@ export function TarotPage() {
       return;
     }
 
-    // 1er clic — uniquement permis sur la carte active (en croix) ou direct (single)
-    if (mode === "cross" && idx !== activeIdx) return;
+    // 1er clic — uniquement permis sur la carte active (séquentiel) ou direct (single)
+    const sequential = mode === "cross" || mode === "three";
+    if (sequential && idx !== activeIdx) return;
 
     setDraw((prev) =>
       prev.map((d, i) => (i === idx ? { ...d, isRevealed: true } : d))
     );
 
-    if (mode === "cross" && activeIdx < draw.length - 1) {
+    if (sequential && activeIdx < draw.length - 1) {
       setActiveIdx((i) => i + 1);
     }
   };
@@ -116,12 +124,17 @@ export function TarotPage() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.45 }}
-              className="grid grid-cols-1 sm:grid-cols-2 gap-5 max-w-3xl w-full mt-6"
+              className="grid grid-cols-1 sm:grid-cols-3 gap-5 max-w-5xl w-full mt-6"
             >
               <ModeButton
                 title="La Carte Unique"
                 desc="Une guidance brève et immédiate"
                 onClick={() => startMode("single")}
+              />
+              <ModeButton
+                title="Passé — Présent — Futur"
+                desc="Trois cartes pour lire le fil du temps"
+                onClick={() => startMode("three")}
               />
               <ModeButton
                 title="Le Tirage en Croix"
@@ -155,6 +168,43 @@ export function TarotPage() {
             </motion.div>
           )}
 
+          {mode === "three" && (
+            <motion.div
+              key="three"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.5 }}
+              className="flex flex-col items-center gap-4 md:gap-3 mt-2 w-full"
+            >
+              <div className="flex flex-wrap justify-center items-end gap-4 sm:gap-6 md:gap-8">
+                {draw.map((d, i) => (
+                  <FlipCard
+                    key={d.position?.key ?? i}
+                    isRevealed={d.isRevealed}
+                    isActive={i === activeIdx && !d.isRevealed}
+                    frontImage={d.card.image}
+                    frontAlt={d.card.name}
+                    onClick={() => handleCardClick(i)}
+                    caption={d.position?.label}
+                    buttonClassName="h-48 sm:h-64 md:h-[clamp(14rem,60svh,26rem)]"
+                  />
+                ))}
+              </div>
+
+              {!allRevealed && (
+                <p className="font-body italic text-sepia text-center max-w-md">
+                  Cliquez sur la carte cerclée d'or pour la retourner.
+                </p>
+              )}
+              {allRevealed && (
+                <p className="font-body italic text-sepia text-center max-w-md">
+                  Cliquez sur n'importe quelle carte pour révéler son interprétation.
+                </p>
+              )}
+            </motion.div>
+          )}
+
           {mode === "cross" && (
             <motion.div
               key="cross"
@@ -175,7 +225,7 @@ export function TarotPage() {
                 {draw.map((d, i) => (
                   <div
                     key={d.position?.key ?? i}
-                    className={GRID_AREA_CLASS[d.position!.gridArea]}
+                    className={GRID_AREA_CLASS[d.position!.gridArea!]}
                   >
                     <FlipCard
                       isRevealed={d.isRevealed}

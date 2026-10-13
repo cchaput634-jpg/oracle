@@ -33,3 +33,9 @@ export const TAROT_CROSS_POSITIONS: TarotCrossPosition[] = [
   { key: "consultant", label: "Le Consultant", role: "Vous, ici et maintenant",     gridArea: "center" },
   { key: "issue",      label: "L'Issue",       role: "Ce vers quoi tout tend",      gridArea: "bottom" },
 ];
+
+export const TAROT_THREE_POSITIONS: TarotCrossPosition[] = [
+  { key: "passe",   label: "Le Passé",   role: "Ce qui a été" },
+  { key: "present", label: "Le Présent", role: "Ce qui est maintenant" },
+  { key: "futur",   label: "Le Futur",   role: "Ce qui vient" },
+];

@@ -10,8 +10,8 @@ export interface TarotCrossPosition {
   key: string;
   label: string;
   role: string;
-  /** Zone CSS grid : top | left | center | right | bottom */
-  gridArea: "top" | "left" | "center" | "right" | "bottom";
+  /** Zone CSS grid pour le tirage en croix uniquement */
+  gridArea?: "top" | "left" | "center" | "right" | "bottom";
 }
 
 export interface DrawnTarotCard {
