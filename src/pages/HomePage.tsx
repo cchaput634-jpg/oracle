@@ -26,6 +26,12 @@ const MODULES = [
     name: "La Cristallomancie",
     desc: "Visions dans la sphère",
   },
+  {
+    to: "/lithotherapie",
+    symbol: "◈",
+    name: "Lithothérapie",
+    desc: "Pierres par familles et bienfaits",
+  },
 ];
 
 export function HomePage() {
