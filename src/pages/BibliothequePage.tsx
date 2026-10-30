@@ -107,8 +107,8 @@ function BookCover({ book }: { book: Book }) {
       <span className="absolute bottom-2 left-2 text-gold text-xs">✦</span>
       <span className="absolute bottom-2 right-2 text-gold text-xs">✦</span>
       {/* Title block */}
-      <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 py-6">
-        <span className="font-display text-sm sm:text-base md:text-lg tracking-widest text-gold-gradient leading-tight">
+      <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-5 py-6">
+        <span className="font-display text-xs sm:text-sm md:text-base tracking-wider text-gold-gradient leading-tight break-words [text-wrap:balance] max-w-full">
           {book.title}
         </span>
         <div className="mt-3 h-px w-10 bg-gradient-to-r from-transparent via-gold to-transparent" />
