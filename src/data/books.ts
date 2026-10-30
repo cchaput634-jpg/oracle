@@ -19,4 +19,13 @@ export const BOOKS: Book[] = [
     summary: "Grimoire d'interprétation du jeu Ombrum",
     coverColor: "#1b1848",
   },
+  {
+    id: "runes-divination",
+    title: "Les Runes de Divination",
+    author: "Alice Hecalys",
+    source: "/bibliotheque/runes-divination.html",
+    format: "html",
+    summary: "Interprétation des runes et tirages",
+    coverColor: "#132a19",
+  },
 ];
