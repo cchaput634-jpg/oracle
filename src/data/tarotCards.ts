@@ -23,7 +23,7 @@ export const TAROT_CARDS: TarotCard[] = [
   { id: 20, roman: "XX",    name: "Le Conseiller",    meaning: "L'éveil, rédemption, conséquences des actions, appel à l'action",                                                            image: "/images/tarot/conseiller.png" },
   { id: 21, roman: "XXI",   name: "Le Sanctuaire",    meaning: "L'accomplissement, plénitude, harmonie parfaite, maîtrise totale",                                                           image: "/images/tarot/sanctuaire.png" },
   { id: 22, roman: "XXII",  name: "Le Vagabond",      meaning: "L'aventure, insouciance, saut dans l'inconnu, début d'un nouveau voyage",                                                    image: "/images/tarot/vagabond.png" },
-  { id: 23, roman: "XXIII", name: "L'Altérité",       meaning: "Créature magique, rapport aux autres cartes du tirage",                                                                      image: "/images/tarot/alterite.png" },
+  { id: 23, roman: "XXIII", name: "L'Altérité",       meaning: "Créature non humaine, rapport aux autres",                                                                      image: "/images/tarot/alterite.png" },
 ];
 
 export const TAROT_CROSS_POSITIONS: TarotCrossPosition[] = [
