@@ -14,12 +14,13 @@ const MODULES = [
     name: "Les Runes",
     desc: "Tirage à trois runes ou à une seule",
   },
-  {
-    to: "/tasseomancie",
-    symbol: "☕",
-    name: "La Tassomancie",
-    desc: "Lecture des feuilles de thé",
-  },
+  // Tassomancie désactivée (code et route conservés — réactiver en décommentant ici et dans App.tsx)
+  // {
+  //   to: "/tasseomancie",
+  //   symbol: "☕",
+  //   name: "La Tassomancie",
+  //   desc: "Lecture des feuilles de thé",
+  // },
   {
     to: "/cristallomancie",
     symbol: "🔮",

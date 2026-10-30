@@ -4,7 +4,8 @@ import { BackHomeButton } from "@/components/BackHomeButton";
 import { HomePage } from "@/pages/HomePage";
 import { TarotPage } from "@/pages/TarotPage";
 import { RunesPage } from "@/pages/RunesPage";
-import { TasseomanciePage } from "@/pages/TasseomanciePage";
+// Tassomancie désactivée (voir Route en bas) — réactiver avec la ligne commentée
+// import { TasseomanciePage } from "@/pages/TasseomanciePage";
 import { CristallomanciePage } from "@/pages/CristallomanciePage";
 import { LithotherapiePage } from "@/pages/LithotherapiePage";
 import { BibliothequePage } from "@/pages/BibliothequePage";
@@ -29,7 +30,7 @@ export default function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/tarot" element={<TarotPage />} />
             <Route path="/runes" element={<RunesPage />} />
-            <Route path="/tasseomancie" element={<TasseomanciePage />} />
+            {/* <Route path="/tasseomancie" element={<TasseomanciePage />} /> */}
             <Route path="/cristallomancie" element={<CristallomanciePage />} />
             <Route path="/lithotherapie" element={<LithotherapiePage />} />
             <Route path="/bibliotheque" element={<BibliothequePage />} />
