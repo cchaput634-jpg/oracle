@@ -34,7 +34,7 @@ export function BibliothequePage() {
                   {book.title}
                 </h3>
                 <p className="font-body italic text-xs sm:text-sm text-moonlight/80 mt-0.5">
-                  par {book.author}
+                  {book.author ? `par ${book.author}` : "Auteur inconnu"}
                 </p>
               </div>
             </motion.button>
@@ -59,7 +59,7 @@ export function BibliothequePage() {
                   {openBook.title}
                 </h3>
                 <p className="font-body italic text-xs sm:text-sm text-moonlight/80 truncate">
-                  écrit par {openBook.author}
+                  {openBook.author ? `écrit par ${openBook.author}` : "Auteur inconnu"}
                 </p>
               </div>
               <button
@@ -113,7 +113,7 @@ function BookCover({ book }: { book: Book }) {
         </span>
         <div className="mt-3 h-px w-10 bg-gradient-to-r from-transparent via-gold to-transparent" />
         <span className="mt-2 font-body italic text-[0.65rem] sm:text-xs text-gold/80">
-          A. Hecalys
+          {book.author ?? "Auteur inconnu"}
         </span>
       </div>
     </div>

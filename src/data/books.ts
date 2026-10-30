@@ -40,7 +40,7 @@ export const BOOKS: Book[] = [
   {
     id: "livre-des-rituels",
     title: "Livre des Rituels de Skylis",
-    author: "Skylis",
+    // auteur inconnu — pas de champ author
     source: "/bibliotheque/livre-des-rituels.html",
     format: "html",
     summary: "Rituels de la nation du vent",

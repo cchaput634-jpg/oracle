@@ -1,7 +1,8 @@
 export interface Book {
   id: string;
   title: string;
-  author: string;
+  /** Nom d'auteur ; absent = "Auteur inconnu" */
+  author?: string;
   /** Chemin public vers la source du livre (sous /public) */
   source: string;
   /** Format du livre à charger dans le lecteur */
