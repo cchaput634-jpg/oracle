@@ -28,4 +28,13 @@ export const BOOKS: Book[] = [
     summary: "Interprétation des runes et tirages",
     coverColor: "#132a19",
   },
+  {
+    id: "cristallomancie",
+    title: "Cristallomancie",
+    author: "Alice Hecalys",
+    source: "/bibliotheque/cristallomancie.html",
+    format: "html",
+    summary: "Lecture et interprétation de la boule de cristal",
+    coverColor: "#0e1a33",
+  },
 ];
