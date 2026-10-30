@@ -32,6 +32,12 @@ const MODULES = [
     name: "Lithothérapie",
     desc: "Pierres par familles et bienfaits",
   },
+  {
+    to: "/bibliotheque",
+    symbol: "📖",
+    name: "Bibliothèque",
+    desc: "Grimoires à feuilleter",
+  },
 ];
 
 export function HomePage() {
