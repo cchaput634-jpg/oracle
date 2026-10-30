@@ -37,4 +37,13 @@ export const BOOKS: Book[] = [
     summary: "Lecture et interprétation de la boule de cristal",
     coverColor: "#0e1a33",
   },
+  {
+    id: "livre-des-rituels",
+    title: "Livre des Rituels de Skylis",
+    author: "Skylis",
+    source: "/bibliotheque/livre-des-rituels.html",
+    format: "html",
+    summary: "Rituels de la nation du vent",
+    coverColor: "#1f4673",
+  },
 ];
