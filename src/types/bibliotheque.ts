@@ -2,8 +2,10 @@ export interface Book {
   id: string;
   title: string;
   author: string;
-  /** Chemin public vers le PDF (sous /public) */
-  pdf: string;
+  /** Chemin public vers la source du livre (sous /public) */
+  source: string;
+  /** Format du livre à charger dans le lecteur */
+  format: "html" | "pdf";
   /** Court résumé optionnel affiché sous la couverture */
   summary?: string;
   /** Couleur dominante CSS de la couverture (dégradés) */

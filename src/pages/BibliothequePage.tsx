@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { X } from "lucide-react";
 import { ModuleHeader } from "@/components/ModuleHeader";
-import { Flipbook } from "@/components/Flipbook";
+import { BookReader } from "@/components/BookReader";
 import { BOOKS } from "@/data/books";
 import type { Book } from "@/types/bibliotheque";
 
@@ -73,10 +73,10 @@ export function BibliothequePage() {
             </header>
 
             <div
-              className="flex-1 min-h-0 overflow-auto px-3 sm:px-6 py-6 sm:py-10 fancy-scroll"
+              className="flex-1 min-h-0"
               onClick={(e) => e.stopPropagation()}
             >
-              <Flipbook pdfUrl={openBook.pdf} />
+              <BookReader book={openBook} />
             </div>
           </motion.div>
         )}
