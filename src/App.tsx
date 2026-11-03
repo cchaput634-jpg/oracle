@@ -9,6 +9,7 @@ import { RunesPage } from "@/pages/RunesPage";
 import { CristallomanciePage } from "@/pages/CristallomanciePage";
 import { LithotherapiePage } from "@/pages/LithotherapiePage";
 import { BibliothequePage } from "@/pages/BibliothequePage";
+import { PendulePage } from "@/pages/PendulePage";
 
 export default function App() {
   const location = useLocation();
@@ -34,6 +35,7 @@ export default function App() {
             <Route path="/cristallomancie" element={<CristallomanciePage />} />
             <Route path="/lithotherapie" element={<LithotherapiePage />} />
             <Route path="/bibliotheque" element={<BibliothequePage />} />
+            <Route path="/pendule" element={<PendulePage />} />
             <Route path="*" element={<HomePage />} />
           </Routes>
         </motion.div>

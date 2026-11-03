@@ -39,6 +39,12 @@ const MODULES = [
     name: "Bibliothèque",
     desc: "Grimoires à feuilleter",
   },
+  {
+    to: "/pendule",
+    symbol: "⚜",
+    name: "Pendule",
+    desc: "Trois pendules pour oui / non / neutre",
+  },
 ];
 
 export function HomePage() {

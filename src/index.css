@@ -281,6 +281,37 @@ body::before {
   border-radius: 4px;
 }
 
+/* ============ PENDULE (rotations 3D du corps autour du point d'attache) ============ */
+.pendule-stage { perspective: 900px; perspective-origin: 50% 0%; }
+.pendule-pivot { transform-origin: top center; transform-style: preserve-3d; }
+
+/* OUI — cercle horaire (vu de dessus) : droite → avant → gauche → arrière */
+.pendule-oui { animation: pendule-oui 2.2s linear infinite; }
+@keyframes pendule-oui {
+  0%   { transform: rotateZ(24deg)  rotateX(0); }
+  25%  { transform: rotateZ(0)      rotateX(24deg); }
+  50%  { transform: rotateZ(-24deg) rotateX(0); }
+  75%  { transform: rotateZ(0)      rotateX(-24deg); }
+  100% { transform: rotateZ(24deg)  rotateX(0); }
+}
+
+/* NON — cercle anti-horaire : droite → arrière → gauche → avant */
+.pendule-non { animation: pendule-non 2.2s linear infinite; }
+@keyframes pendule-non {
+  0%   { transform: rotateZ(24deg)  rotateX(0); }
+  25%  { transform: rotateZ(0)      rotateX(-24deg); }
+  50%  { transform: rotateZ(-24deg) rotateX(0); }
+  75%  { transform: rotateZ(0)      rotateX(24deg); }
+  100% { transform: rotateZ(24deg)  rotateX(0); }
+}
+
+/* NEUTRE — stable, très léger frémissement */
+.pendule-neutre { animation: pendule-neutre 3.4s ease-in-out infinite; }
+@keyframes pendule-neutre {
+  0%, 100% { transform: rotateZ(-1deg); }
+  50%      { transform: rotateZ(1deg); }
+}
+
 /* ============ UTILITAIRES ============ */
 .no-tap { -webkit-tap-highlight-color: transparent; }
 
