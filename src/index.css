@@ -282,34 +282,52 @@ body::before {
 }
 
 /* ============ PENDULE (rotations 3D du corps autour du point d'attache) ============ */
-.pendule-stage { perspective: 900px; perspective-origin: 50% 0%; }
-.pendule-pivot { transform-origin: top center; transform-style: preserve-3d; }
+.pendule-stage {
+  perspective: 480px;         /* perspective courte = effet 3D marqué */
+  perspective-origin: 50% 0%; /* le point de fuite part de l'attache en haut */
+  transform-style: preserve-3d;
+}
+.pendule-pivot {
+  transform-origin: top center;
+  transform-style: preserve-3d;
+  will-change: transform;
+  backface-visibility: visible;
+}
 
-/* OUI — cercle horaire (vu de dessus) : droite → avant → gauche → arrière */
-.pendule-oui { animation: pendule-oui 2.2s linear infinite; }
+/* OUI — cercle horaire vu de dessus (droite → avant → gauche → arrière),
+   trajectoire conique sur 8 points pour une révolution fluide */
+.pendule-oui { animation: pendule-oui 2.6s linear infinite; }
 @keyframes pendule-oui {
-  0%   { transform: rotateZ(24deg)  rotateX(0); }
-  25%  { transform: rotateZ(0)      rotateX(24deg); }
-  50%  { transform: rotateZ(-24deg) rotateX(0); }
-  75%  { transform: rotateZ(0)      rotateX(-24deg); }
-  100% { transform: rotateZ(24deg)  rotateX(0); }
+  0%     { transform: rotateZ(34deg)  rotateX(0);      }
+  12.5%  { transform: rotateZ(24deg)  rotateX(24deg);  }
+  25%    { transform: rotateZ(0)      rotateX(34deg);  }
+  37.5%  { transform: rotateZ(-24deg) rotateX(24deg);  }
+  50%    { transform: rotateZ(-34deg) rotateX(0);      }
+  62.5%  { transform: rotateZ(-24deg) rotateX(-24deg); }
+  75%    { transform: rotateZ(0)      rotateX(-34deg); }
+  87.5%  { transform: rotateZ(24deg)  rotateX(-24deg); }
+  100%   { transform: rotateZ(34deg)  rotateX(0);      }
 }
 
-/* NON — cercle anti-horaire : droite → arrière → gauche → avant */
-.pendule-non { animation: pendule-non 2.2s linear infinite; }
+/* NON — cercle anti-horaire (droite → arrière → gauche → avant) */
+.pendule-non { animation: pendule-non 2.6s linear infinite; }
 @keyframes pendule-non {
-  0%   { transform: rotateZ(24deg)  rotateX(0); }
-  25%  { transform: rotateZ(0)      rotateX(-24deg); }
-  50%  { transform: rotateZ(-24deg) rotateX(0); }
-  75%  { transform: rotateZ(0)      rotateX(24deg); }
-  100% { transform: rotateZ(24deg)  rotateX(0); }
+  0%     { transform: rotateZ(34deg)  rotateX(0);      }
+  12.5%  { transform: rotateZ(24deg)  rotateX(-24deg); }
+  25%    { transform: rotateZ(0)      rotateX(-34deg); }
+  37.5%  { transform: rotateZ(-24deg) rotateX(-24deg); }
+  50%    { transform: rotateZ(-34deg) rotateX(0);      }
+  62.5%  { transform: rotateZ(-24deg) rotateX(24deg);  }
+  75%    { transform: rotateZ(0)      rotateX(34deg);  }
+  87.5%  { transform: rotateZ(24deg)  rotateX(24deg);  }
+  100%   { transform: rotateZ(34deg)  rotateX(0);      }
 }
 
-/* NEUTRE — stable, très léger frémissement */
-.pendule-neutre { animation: pendule-neutre 3.4s ease-in-out infinite; }
+/* NEUTRE — stable, imperceptible frémissement 3D */
+.pendule-neutre { animation: pendule-neutre 4s ease-in-out infinite; }
 @keyframes pendule-neutre {
-  0%, 100% { transform: rotateZ(-1deg); }
-  50%      { transform: rotateZ(1deg); }
+  0%, 100% { transform: rotateZ(-1.2deg) rotateX(0.6deg);  }
+  50%      { transform: rotateZ(1.2deg)  rotateX(-0.6deg); }
 }
 
 /* ============ UTILITAIRES ============ */

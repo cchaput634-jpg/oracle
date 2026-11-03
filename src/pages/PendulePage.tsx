@@ -36,7 +36,7 @@ export function PendulePage() {
     const r = pickOne(["oui", "non", "neutre"] as const);
     setResult(r);
     setPhase("consulting");
-    window.setTimeout(() => setPhase("revealed"), 3600);
+    window.setTimeout(() => setPhase("revealed"), 5200);
   };
 
   const nouvelleQuestion = () => {
