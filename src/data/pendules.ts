@@ -15,7 +15,7 @@ export const PENDULES: Pendule[] = [
     materiau: "Laiton massif, chaînette métallique",
     forme: "Goutte allongée à cavité dévissable (témoin)",
     usage:
-      "Recherche d'une personne, d'un animal ou d'un objet, au-dessus d'une carte ou d'un plan.",
+      "Pour les questions liées à un être ou un objet perdus, pour la recherche.",
   },
   {
     key: "egyptien",
@@ -23,6 +23,6 @@ export const PENDULES: Pendule[] = [
     materiau: "Bois de hêtre ou buis, cordon de coton",
     forme: "Empilement de disques et de sphères sculptés",
     usage:
-      "Soins énergétiques, équilibrage des chakras, purification d'un lieu.",
+      "Questionnement sur soi, sur la santé énergétique, le bien-être.",
   },
 ];
