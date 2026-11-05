@@ -8,7 +8,8 @@ import { RunesPage } from "@/pages/RunesPage";
 // import { TasseomanciePage } from "@/pages/TasseomanciePage";
 import { CristallomanciePage } from "@/pages/CristallomanciePage";
 import { LithotherapiePage } from "@/pages/LithotherapiePage";
-import { BibliothequePage } from "@/pages/BibliothequePage";
+// Bibliothèque désactivée (voir Route en bas) — réactiver en décommentant
+// import { BibliothequePage } from "@/pages/BibliothequePage";
 import { PendulePage } from "@/pages/PendulePage";
 
 export default function App() {
@@ -34,7 +35,7 @@ export default function App() {
             {/* <Route path="/tasseomancie" element={<TasseomanciePage />} /> */}
             <Route path="/cristallomancie" element={<CristallomanciePage />} />
             <Route path="/lithotherapie" element={<LithotherapiePage />} />
-            <Route path="/bibliotheque" element={<BibliothequePage />} />
+            {/* <Route path="/bibliotheque" element={<BibliothequePage />} /> */}
             <Route path="/pendule" element={<PendulePage />} />
             <Route path="*" element={<HomePage />} />
           </Routes>
