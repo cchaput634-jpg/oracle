@@ -11,6 +11,7 @@ import { LithotherapiePage } from "@/pages/LithotherapiePage";
 // Bibliothèque désactivée (voir Route en bas) — réactiver en décommentant
 // import { BibliothequePage } from "@/pages/BibliothequePage";
 import { PendulePage } from "@/pages/PendulePage";
+import { TraductionPage } from "@/pages/TraductionPage";
 
 export default function App() {
   const location = useLocation();
@@ -37,6 +38,7 @@ export default function App() {
             <Route path="/lithotherapie" element={<LithotherapiePage />} />
             {/* <Route path="/bibliotheque" element={<BibliothequePage />} /> */}
             <Route path="/pendule" element={<PendulePage />} />
+            <Route path="/traduction" element={<TraductionPage />} />
             <Route path="*" element={<HomePage />} />
           </Routes>
         </motion.div>

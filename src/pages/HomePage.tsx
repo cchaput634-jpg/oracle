@@ -46,6 +46,12 @@ const MODULES = [
     name: "Pendule",
     desc: "Trois pendules pour oui / non / neutre",
   },
+  {
+    to: "/traduction",
+    symbol: "ᚱ",
+    name: "Traduction de Runes",
+    desc: "Composez une inscription runique et lisez sa traduction",
+  },
 ];
 
 export function HomePage() {

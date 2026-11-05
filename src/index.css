@@ -180,6 +180,7 @@ body::before {
 .font-display { font-family: var(--font-display); }
 .font-mystic  { font-family: var(--font-mystic); }
 .font-body    { font-family: var(--font-body); }
+.font-rune    { font-family: "Noto Sans Runic", "Segoe UI Historic", "Segoe UI Symbol", sans-serif; }
 
 /* ============ DÉGRADÉ OR ============ */
 .text-gold-gradient {
